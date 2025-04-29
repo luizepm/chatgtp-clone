@@ -2,7 +2,7 @@ const OpenAI = require('openai');
 
 class OpenAIConfig {
     
-    static Configuration() {
+    static configuration() {
         const configuration = new OpenAI({
             apiKey: process.env.OPENAI_API_KEY,
         });
@@ -15,16 +15,9 @@ class OpenAIConfig {
             apiKey: process.env.OPENAI_API_KEY,
         });
 
-        var request = this.textCompletion(inputModel);
+        const response = await openAi.responses.create(this.textCompletion(inputModel));
 
-        var fake = {
-            model: "gpt-4.1",
-            input: "Write a one-sentence bedtime story about a unicorn."
-        };
-
-        const response = await openAi.responses.create(fake);
-
-        if (response.status !== 200) {
+        if (response.status !== "completed") {
             throw new Error('Error in OpenAI API response');
         }
 

@@ -3,8 +3,10 @@
 
 ### Requisição para ChatGpt
 POST {{baseUrl}}/api/prompt
-
 Content-Type: application/json
+
 {
     "prompt": "Diga um nome legal para uma aula de node com chatgtp."
 }
+
+###
